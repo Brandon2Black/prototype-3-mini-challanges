@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 	public AudioClip crashSound;
 	private AudioSource playerAudio;
 
+	public int JumpCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +30,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+		if (Input.GetKeyDown(KeyCode.Space) && JumpCount < 2 && !gameOver)
 		{
 			playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 			isOnGround = false;
 			playerAnim.SetTrigger("Jump_trig");
 			dirtParticle.Stop();
 			playerAudio.PlayOneShot(jumpSound, 0.4f);
+			JumpCount += 1;
+			Debug.Log(JumpCount);
 		}
     }
 
@@ -44,6 +48,7 @@ public class PlayerController : MonoBehaviour
 		{
 			isOnGround = true;
 			dirtParticle.Play();
+			JumpCount = 0;
 		} else if (collision.gameObject.CompareTag("Obstacle"))
 		{
 			gameOver = true;

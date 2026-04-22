@@ -482,7 +482,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66ce0fda7508547d2be6b20eac53f119, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7216981, g: 0.74147904, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -964,7 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385d52c925e7e4888908e7c846e166a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
+  jumpForce: 9
   gravityModifier: 2
   isOnGround: 1
   gameOver: 0
@@ -972,6 +972,7 @@ MonoBehaviour:
   dirtParticle: {fileID: 190204722}
   jumpSound: {fileID: 8300000, guid: 0f7d0b7c3397f4dac91f20e8a77d2d57, type: 3}
   crashSound: {fileID: 8300000, guid: e7ee25a47d63b46cdaf65480d62b405c, type: 3}
+  JumpCount: 0
 --- !u!4 &2498636926252819608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9006006813166978675, guid: b660e703a8b1b4a8cb20d79542dff8bc, type: 3}
