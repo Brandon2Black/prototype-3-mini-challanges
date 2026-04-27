@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
 	public int JumpCount = 0;
 
+	public float tick;
+	public float currentTick;
+	public bool DB = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
 		playerAnim = GetComponent<Animator>();
 		Physics.gravity *= gravityModifier;
 		playerAudio = GetComponent<AudioSource>();
+
+		tick = Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -40,7 +45,28 @@ public class PlayerController : MonoBehaviour
 			JumpCount += 1;
 			Debug.Log(JumpCount);
 		}
+
+		if (Input.GetKeyDown(KeyCode.Q) && DB == false)
+		{
+			
+			SpawnManager.speed = 4.0f;
+			MoveLeft.speed = 40.0f;
+			//DB = true;
+			tick = Time.deltaTime;
+			StartCoroutine("WaitForSeconds", 0.0f);
+		}
+		if (Input.GetKeyUp(KeyCode.Q))
+		{
+          SpawnManager.speed = 2.0f;
+			MoveLeft.speed = 20.0f;
+		}
     }
+
+	IEnumerator WaitForSeconds()
+	{
+		yield return new WaitForSeconds(5.0f);
+		currentTick = Time.deltaTime;
+	}
 
 	private void OnCollisionEnter(Collision collision)
 	{
